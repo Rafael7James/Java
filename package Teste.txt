@@ -1,0 +1,29 @@
+package Teste;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.awt.event.ActionEvent;
+import javax.awt.event.ActionListener;
+
+public class Teste{
+	
+	public static void main(String[] args) {
+		
+		JFrame frame  = new JFrame("Sistema de Gestão");
+		frame.setSize(500, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JButton button = new JButton("Clique aqui para acessar o sistema");
+		button.addActionListener(new ActioListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(frame, "Sistema em construção");
+				JOptionPane.showMessageDialog(frame, "Tentar mais tarde");
+				JOptionPane.showMessageDialog(frame, "Tentar mais tarde");
+				JOptionPane.showMessageDialog(frame, "Tentar mais tarde");
+				JOptionPane.showMessageDialog(frame, "Tentar mais tarde");
+			}
+		}};
+		frame.getContentPane().add(button);
+		frame.setVisible(true);
+}
