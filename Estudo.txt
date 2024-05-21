@@ -1,0 +1,97 @@
+ESTUDO DIRIGIDO- GABRIEL GOMES ARAUJO EVANGELISTA, CAUÊ ASSUNÇÃO  
+TURMA 88434 
+
+QUESTÃO 1-
+
+package aplicacao;
+
+import javax.swing.JOptionPane;
+
+public class Principal {
+    public static void main(String[] args) {
+    	
+        // Solicitar que o usuário digite o nome do produto
+        String nomeProduto = JOptionPane.showInputDialog("Digite o nome do produto:");
+        JOptionPane.showMessageDialog(null, "Produto: " + nomeProduto);
+        double m1 = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor de m1:"));
+        double m2 = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor de m2:"));
+        double m3 = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor de m3:"));        
+        
+        double tr = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor de tr:"));
+        double lr = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor de lr:"));        
+        
+        double vmd = ((m1 + m2 + m3) / 3) / 25;        
+        
+        double emin = vmd * tr;
+                
+        double emax = emin + lr;
+        
+        JOptionPane.showMessageDialog(null, "Produto: " + nomeProduto +
+        				    "\nVenda Média Diária (VMD): " + vmd +
+                                            "\nEstoque Mínimo (Emin): " + emin +
+                                            "\nEstoque Máximo (Emax): " + emax);
+        
+     
+        double estoqueAtual = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor do estoque atual:"));
+       
+        if (estoqueAtual < emin) {
+            JOptionPane.showMessageDialog(null, "Estoque atual menor que o estoque mínimo (Emin).\nComprar mais produtos.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Estoque atual dentro do intervalo aceitável.");
+        }
+    }
+
+    }
+
+
+QUESTÃO 2-
+
+import javax.swing.JOptionPane;
+
+public class Faculdade {
+    public static void main(String[] args) {
+        // Criando um aluno com entrada de dados do usuário
+        Aluno aluno = new Aluno();
+        aluno.mostrarDetalhes();
+
+        // Criando um professor com entrada de dados do usuário
+        Professor professor = new Professor();
+        professor.mostrarDetalhes();
+
+        // Criando uma disciplina com entrada de dados do usuário
+        Disciplina disciplina = new Disciplina();
+        disciplina.mostrarDetalhes();
+
+        // Criando um curso com entrada de dados do usuário
+        Curso curso = new Curso();
+        curso.mostrarDetalhes();
+    }
+}
+
+////////////////////////////
+
+package aplicacao;
+
+import javax.swing.JOptionPane;
+
+public class Professor {
+    String nome;
+    String codigo;
+    String disciplina;
+
+    public Professor(String nome, String codigo, String disciplina) {
+        this.nome = nome;
+        this.codigo = codigo;
+        this.disciplina = disciplina;
+    }
+
+    public Professor() {
+        this.nome = JOptionPane.showInputDialog("Digite o nome do professor:");
+        this.codigo = JOptionPane.showInputDialog("Digite o código do professor:");
+        this.disciplina = JOptionPane.showInputDialog("Digite a disciplina do professor:");
+    }
+
+    public void mostrarDetalhes() {
+        JOptionPane.showMessageDialog(null, "Professor: " + nome + "\nCódigo: " + codigo + "\nDisciplina: " + disciplina);
+    }
+}
