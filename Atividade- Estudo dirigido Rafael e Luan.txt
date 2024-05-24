@@ -1,0 +1,133 @@
+Atividade- Estudo dirigido
+
+1-Estilos são abstrações que descrevem como os componentes de um software devem ser organizados. Um software que utiliza o estilo client-server, define alguns componentes: cliente, servidores e o protocolo que faz comunicação entre eles.
+
+2-Um padrão de arquitetura é uma solução geral e reutilizável para um problema que ocorre com frequência em arquitetura de software dentro de um determinado contexto. Padrões de arquitetura são similares aos padrões de projeto de software, mas possuem um escopo mais amplo.
+
+3-A arquitetura em camadas é comumente usada em sistemas de software para organizar e estruturar o código em diferentes níveis de abstração.
+Vantagens: 
+Separação de preocupações- Cada camada tem uma responsabilidade clara e separada, o que torna o sistema mais modular e mais fácil de entender.
+
+Flexibilidade- Você pode substituir ou modificar uma camada sem afetar as outras, desde que a interface entre as camadas permaneça a mesma.
+
+Facilidade de teste- As camadas podem ser testadas independentemente umas das outras, o que facilita a realização de testes unitários e de integração.
+
+Desvantagens:
+Overhead de comunicação- A comunicação entre as camadas pode introduzir overhead, especialmente em sistemas distribuídos, onde a comunicação entre as camadas pode envolver a passagem de dados pela rede.
+
+Complexidade adicional- A introdução de várias camadas pode aumentar a complexidade do sistema, especialmente se não for feita uma divisão clara das responsabilidades entre as camadas.
+
+Desempenho- Em alguns casos, a arquitetura em camadas pode afetar o desempenho do sistema, especialmente se a comunicação entre as camadas não for otimizada.
+
+4- A estrutura cliente-servidor é amplamente utilizada em infraestruturas de TI locais por oferecer benefícios como: controle centralizado, eficiência, segurança, escalabilidade, integração e facilidade de manutenção.
+Vantagens: 
+Escalabilidade- É relativamente fácil escalar sistemas cliente-servidor, adicionando mais servidores para lidar com um aumento no número de clientes.
+
+Centralização de recursos- Os servidores fornecem recursos centralizados, como processamento de dados, armazenamento e lógica de negócios, o que pode simplificar o desenvolvimento e a manutenção do sistema.
+
+Atualizações centralizadas- As atualizações de software podem ser implementadas nos servidores, sem a necessidade de atualizar individualmente cada cliente.
+
+Segurança- Os servidores podem implementar medidas de segurança centralizadas, como autenticação e controle de acesso, para proteger os dados e os recursos do sistema.
+
+5-A arquitetura ponto-a-ponto, também conhecida como rede ponto a ponto (ou P2P), é um formato de rede de computadores em que cada dispositivo funciona tanto como cliente quanto como servidor.
+Vantagens:
+Velocidade de Transferência de Dados- A conexão direta entre os dispositivos permite uma transferência mais rápida de dados1.
+Baixo Custo- A implementação é geralmente mais econômica, pois não requer servidores dedicados.
+Fácil Instalação- Configurar uma rede ponto a ponto é relativamente simples.
+Sistema Simples de Cabeamento- Não há necessidade de infraestrutura complexa.
+Independência de Servidores Interconectados- Cada dispositivo pode operar independentemente, sem depender de um servidor central2.
+
+Desvantagens:
+Alta Dependência de um Único Dispositivo- Se um dispositivo falhar, a rede pode ficar inoperante.
+Limitação em Redes Pequenas- A arquitetura ponto a ponto é mais adequada para redes pequenas, pois não escala bem para grandes ambientes.
+Complexidade- Embora flexível, a configuração ponto a ponto pode ser complexa2.
+
+6- import javax.swing.JOptionPane;
+
+class Produto {
+    private String nome;
+    private double preco;
+
+    public Produto(String nome, double preco) {
+        this.nome = nome;
+        this.preco = preco;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+}
+
+class CarrinhoDeCompras {
+    private double total = 0;
+
+    public void adicionarProduto(Produto produto) {
+        total += produto.getPreco();
+    }
+
+    public double getTotal() {
+        return total;
+    }
+}
+
+class Estoque {
+    private double vmd;
+    private double emin;
+    private double emax;
+
+    public Estoque(double m1, double m2, double m3, double tr, double lr) {
+        vmd = ((m1 + m2 + m3) / 3) / 25;
+        emin = vmd * tr;
+        emax = emin + lr;
+    }
+
+    public double getVMD() {
+        return vmd;
+    }
+
+    public double getEmin() {
+        return emin;
+    }
+
+    public double getEmax() {
+        return emax;
+    }
+}
+
+public class Q {
+    public static void main(String[] args) {
+        // Solicita o nome do produto
+        String nomeProduto = JOptionPane.showInputDialog("Digite o nome do produto:");
+        
+        // Solicita os valores de m1, m2, m3, tr e lr
+        double m1 = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor de m1:"));
+        double m2 = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor de m2:"));
+        double m3 = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor de m3:"));
+        double tr = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor de tr:"));
+        double lr = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor de lr:"));
+
+        // Cria um objeto Produto com o nome e o preço médio calculado
+        Produto produto = new Produto(nomeProduto, (m1 + m2 + m3) / 3);
+        
+        // Cria objetos CarrinhoDeCompras e Estoque
+        CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
+        Estoque estoque = new Estoque(m1, m2, m3, tr, lr);
+
+        // Adiciona o produto ao carrinho
+        carrinho.adicionarProduto(produto);
+
+        // Exibe os resultados em uma caixa de diálogo
+        JOptionPane.showMessageDialog(null,
+                "Produto: " + produto.getNome() +
+                "\nVenda Média Diária (VMD): " + estoque.getVMD() +
+                "\nEstoque Mínimo (Emin): " + estoque.getEmin() +
+                "\nEstoque Máximo (Emax): " + estoque.getEmax() +
+                "\nTotal no Carrinho: R$" + carrinho.getTotal());
+    }
+}
+
+7-
