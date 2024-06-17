@@ -1,0 +1,39 @@
+package aprendendo;
+import java.util.Scanner;
+public class Atv1 {
+    public static void main(String[] args) {
+        
+    	double soma;
+        double subt;
+        double mult;
+        double divi;
+        double media;
+        
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o 1° número: ");
+        double num1 = scanner.nextDouble();
+        
+        System.out.print("Digite o segundo número: ");
+        double num2 = scanner.nextDouble();
+        
+         soma = num1 + num2;
+         subt = num1 - num2;
+         mult = num1 * num2;
+         divi = num1 / num2;
+         media = num1 + num2 / 2;
+         System.out.println("--------------------------------");
+         System.out.println("A soma dos números é: " + soma);
+         System.out.println("A subtração dos números é: " + subt);
+         System.out.println("A multiplicação dos números é: " + mult);
+         System.out.println("A divisão dos números é: " + divi);
+         System.out.println("A média é: " + media); 
+         
+         if(media >= 7){
+        	 System.out.println("Aprovado");
+         }else {
+        	 
+        		 System.out.println("Reprovado");
+        	 
+         }
+    }
+}
