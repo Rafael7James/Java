@@ -1,0 +1,33 @@
+package aprendendo;
+
+import javax.swing.*;
+import javax.swing.JOptionPane;
+
+public class Atv2 {
+
+    public static void main(String[] args) {
+        
+        String nome = JOptionPane.showInputDialog(null, "Digite o nome:");
+        String idadeStr = JOptionPane.showInputDialog(null, "Digite a idade:");
+        
+       
+        int idade = Integer.parseInt(idadeStr);
+        
+       
+        String nota1Str = JOptionPane.showInputDialog(null, "Digite a primeira nota:");
+        String nota2Str = JOptionPane.showInputDialog(null, "Digite a segunda nota:");
+        
+        
+        double nota1 = Double.parseDouble(nota1Str);
+        double nota2 = Double.parseDouble(nota2Str);
+        
+       
+        double media = (nota1 + nota2) / 2;
+        
+        
+        String mensagem = "Nome: " + nome + "\nIdade: " + idade + "\nMédia das notas: " + String.format("%.2f", media);
+        
+        
+        JOptionPane.showMessageDialog(null, mensagem);
+    }
+}
