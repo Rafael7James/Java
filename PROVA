@@ -1,0 +1,90 @@
+package ProvaJava;
+import javax.swing.JOptionPane;
+
+public class Escola {
+
+    static class Professor {
+        private String nome;
+
+        public Professor(String nome) {
+            this.nome = nome;
+        }
+
+        public String getNome() {
+            return nome;
+        }
+    }
+
+    static class Aluno {
+        private String nome;
+        private Notas notas; 
+
+        public Aluno(String nome) {
+            this.nome = nome;
+            this.notas = new Notas();
+        }
+
+        public String getNome() {
+            return nome;
+        }
+
+        public void adicionarNota(double nota) {
+            notas.adicionarNota(nota);
+        }
+
+        public double calcularMedia() {
+            return notas.calcularMedia();
+        }
+    }
+
+    static class Notas {
+        private int quantidade;
+        private double total;
+
+        public Notas() {
+            this.quantidade = 0;
+            this.total = 0;
+        }
+
+        public void adicionarNota(double nota) {
+            total += nota;
+            quantidade++;
+        }
+
+        public double calcularMedia() {
+            if (quantidade == 0) {
+                return 0; 
+            }
+            return total / quantidade;
+        }
+    }
+
+    public static void main(String[] args) {
+        
+        String nomeEscola = JOptionPane.showInputDialog(null, "Digite o nome da Escola:");
+
+        
+        String nomeProfessor = JOptionPane.showInputDialog(null, "Digite o nome do Professor:");
+
+        
+        String nomeAluno = JOptionPane.showInputDialog(null, "Digite o nome do Aluno:");
+
+        Aluno aluno = new Aluno(nomeAluno);
+
+        while (true) {
+            String inputNota = JOptionPane.showInputDialog(null, "Digite a nota do aluno (ou digite 'fim' para terminar):");
+            if (inputNota.equalsIgnoreCase("fim")) {
+                break; 
+            }
+            try {
+                double nota = Double.parseDouble(inputNota);
+                aluno.adicionarNota(nota); 
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Por favor, digite um número válido para a nota.");
+            }
+        }
+
+        JOptionPane.showMessageDialog(null, "Escola: " + nomeEscola + "\nProfessor: " + nomeProfessor +
+                "\nAluno: " + aluno.getNome() + "\nMédia: " + aluno.calcularMedia());
+    }
+}
